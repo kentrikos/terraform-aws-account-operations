@@ -7,11 +7,12 @@ variable "environment_type" {
 }
 
 variable "vpc_id" {
-  description = "ID of VPC where cluster will be deployed"
+  description = "ID of existing VPC where cluster will be deployed"
 }
 
 variable "region" {
   description = "AWS region"
+  default     = "eu-central-1"
 }
 
 variable "azs" {
@@ -20,12 +21,12 @@ variable "azs" {
 }
 
 variable "k8s_private_subnets" {
-  description = "List of private subnets (matching AZs) where to deploy the cluster)"
+  description = "List of private subnets (matching AZs) where to deploy the cluster (required if existing VPC is used)"
   type        = "list"
 }
 
 variable "k8s_node_count" {
-  description = "Number of worker nodes"
+  description = "Number of worker nodes in Kubernetes cluster"
   default     = "3"
 }
 
@@ -39,26 +40,25 @@ variable "k8s_node_instance_type" {
   default     = "m4.large"
 }
 
+variable "k8s_masters_iam_policies_arns" {
+  description = "List of existing IAM policies that will be attached to instance profile for master nodes (EC2 instances)"
+  type        = "list"
+}
+
+variable "k8s_nodes_iam_policies_arns" {
+  description = "List of existing IAM policies that will be attached to instance profile for worker nodes (EC2 instances)"
+  type        = "list"
+}
+
 variable "http_proxy" {
   description = "IP[:PORT] - address and optional port of HTTP proxy to be used to download packages"
 }
 
-variable "enable_logging" {
-  default = true
-}
+#variable "enable_logging" {
+#  default = true
+#}
+#
+#variable "elasticsearch_version" {
+#  default = "6.3"
+#}
 
-variable "elasticsearch_version" {
-  default = "6.3"
-}
-
-variable "k8s_masters_iam_policy_arn" {
-  description = "ARN of pre-existing IAM policy with permissions for K8s master instances to be used by kops"
-}
-
-variable "k8s_masters_extra_iam_policy_arn" {
-  description = "ARN of additional, pre-existing IAM policy with permissions for K8s master instances to be used by kops"
-}
-
-variable "k8s_nodes_iam_policy_arn" {
-  description = "ARN of pre-existing IAM policy with permissions for K8s worker instances to be used by kops"
-}
