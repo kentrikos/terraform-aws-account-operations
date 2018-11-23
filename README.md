@@ -20,7 +20,7 @@ Most important elements of the environment:
 
 ```hcl
 module "operations" {
-  source = "source = "github.com/kentrikos/terraform-aws-account-operations.git"
+  source = "source = "github.com/kentrikos/terraform-aws-account-operations"
 
   product_domain_name              = "${var.product_domain_name}"
   environment_type                 = "${var.environment_type}"
@@ -61,21 +61,20 @@ module "operations" {
 | kinesis_user_id | - |
 | kinesis_user_secret | - |
 
-
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| azs | Availability Zones for the cluster (1 master per AZ will be deployed) | list | - | yes |
-| environment_type | Type of environment (e.g. test, int, e2e, prod) | string | - | yes |
-| http_proxy | IP[:PORT] - address and optional port of HTTP proxy to be used to download packages | string | - | yes |
-| k8s_master_instance_type | Instance type (size) for master nodes | string | `m4.large` | no |
-| k8s_masters_iam_policies_arns | List of existing IAM policies that will be attached to instance profile for master nodes (EC2 instances) | list | - | yes |
-| k8s_node_count | Number of worker nodes in Kubernetes cluster | string | `3` | no |
-| k8s_node_instance_type | Instance type (size) for worker nodes | string | `m4.large` | no |
-| k8s_nodes_iam_policies_arns | List of existing IAM policies that will be attached to instance profile for worker nodes (EC2 instances) | list | - | yes |
-| k8s_private_subnets | List of private subnets (matching AZs) where to deploy the cluster (required if existing VPC is used) | list | - | yes |
 | product_domain_name | Name of product domain (e.g. maps) | string | - | yes |
-| region | AWS region | string | `eu-central-1` | no |
+| environment_type | Type of environment (e.g. test, int, e2e, prod) | string | - | yes |
 | vpc_id | ID of existing VPC where cluster will be deployed | string | - | yes |
+| region | AWS region | string | - | yes |
+| azs | Availability Zones for the cluster (1 master per AZ will be deployed) | list | - | yes |
+| k8s_private_subnets | List of private subnets (matching AZs) where to deploy the cluster (required if existing VPC is used) | list | - | yes |
+| k8s_node_count | Number of worker nodes in Kubernetes cluster | string | `3` | no |
+| k8s_master_instance_type | Instance type (size) for master nodes | string | `m4.large` | no |
+| k8s_node_instance_type | Instance type (size) for worker nodes | string | `m4.large` | no |
+| k8s_masters_iam_policies_arns | List of existing IAM policies that will be attached to instance profile for master nodes (EC2 instances) | list | - | yes |
+| k8s_nodes_iam_policies_arns | List of existing IAM policies that will be attached to instance profile for worker nodes (EC2 instances) | list | - | yes |
+| http_proxy | IP[:PORT] - address and optional port of HTTP proxy to be used to download packages | string | - | yes |
 

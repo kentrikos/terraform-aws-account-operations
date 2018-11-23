@@ -12,7 +12,6 @@ variable "vpc_id" {
 
 variable "region" {
   description = "AWS region"
-  default     = "eu-central-1"
 }
 
 variable "azs" {
