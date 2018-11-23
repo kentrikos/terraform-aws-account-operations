@@ -20,7 +20,7 @@ Most important elements of the environment:
 
 ```hcl
 module "operations" {
-  source = "source = "github.com/kentrikos/terraform-aws-account-operations"
+  source = "github.com/kentrikos/terraform-aws-account-operations"
 
   product_domain_name              = "${var.product_domain_name}"
   environment_type                 = "${var.environment_type}"
