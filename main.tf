@@ -1,5 +1,5 @@
 locals {
-  cluster_name = "${var.product_domain_name}-${var.environment_type}-operations.k8s.local"
+  cluster_name = "${var.product_domain_name}-${var.environment_type}-ops.k8s.local"
 
   common_tags = {
     ProjectName = "${var.product_domain_name}"
@@ -12,7 +12,7 @@ locals {
 module "kubernetes_cluster_operations" {
   source = "github.com/kentrikos/terraform-aws-kops"
 
-  cluster_name_prefix = "${var.product_domain_name}-${var.environment_type}-operations"
+  cluster_name_prefix = "${var.product_domain_name}-${var.environment_type}-ops"
   region              = "${var.region}"
   vpc_id              = "${var.vpc_id}"
   azs                 = "${join(",", var.azs)}"
