@@ -53,6 +53,11 @@ variable "http_proxy" {
   description = "IP[:PORT] - address and optional port of HTTP proxy to be used to download packages"
 }
 
+variable "k8s_aws_ssh_keypair_name" {
+  description = "Optional name of existing SSH keypair on AWS account, to be used for cluster instances (will be generated if not specified)"
+  default     = ""
+}
+
 #variable "enable_logging" {
 #  default = true
 #}

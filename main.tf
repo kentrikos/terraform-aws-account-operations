@@ -23,6 +23,7 @@ module "kubernetes_cluster_operations" {
   node_count           = "${var.k8s_node_count}"
   master_instance_type = "${var.k8s_master_instance_type}"
   node_instance_type   = "${var.k8s_node_instance_type}"
+  aws_ssh_keypair_name = "${var.k8s_aws_ssh_keypair_name}"
 
   masters_iam_policies_arns = "${var.k8s_masters_iam_policies_arns}"
   nodes_iam_policies_arns   = "${var.k8s_nodes_iam_policies_arns}"

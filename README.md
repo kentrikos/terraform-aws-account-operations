@@ -61,20 +61,21 @@ module "operations" {
 | kinesis_user_id | - |
 | kinesis_user_secret | - |
 
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| product_domain_name | Name of product domain (e.g. maps) | string | - | yes |
-| environment_type | Type of environment (e.g. test, int, e2e, prod) | string | - | yes |
-| vpc_id | ID of existing VPC where cluster will be deployed | string | - | yes |
-| region | AWS region | string | - | yes |
-| azs | Availability Zones for the cluster (1 master per AZ will be deployed) | list | - | yes |
-| k8s_private_subnets | List of private subnets (matching AZs) where to deploy the cluster (required if existing VPC is used) | list | - | yes |
-| k8s_node_count | Number of worker nodes in Kubernetes cluster | string | `3` | no |
-| k8s_master_instance_type | Instance type (size) for master nodes | string | `m4.large` | no |
-| k8s_node_instance_type | Instance type (size) for worker nodes | string | `m4.large` | no |
-| k8s_masters_iam_policies_arns | List of existing IAM policies that will be attached to instance profile for master nodes (EC2 instances) | list | - | yes |
-| k8s_nodes_iam_policies_arns | List of existing IAM policies that will be attached to instance profile for worker nodes (EC2 instances) | list | - | yes |
-| http_proxy | IP[:PORT] - address and optional port of HTTP proxy to be used to download packages | string | - | yes |
-
+| product\_domain\_name | Name of product domain (e.g. maps) | string | n/a | yes |
+| environment\_type | Type of environment (e.g. test, int, e2e, prod) | string | n/a | yes |
+| vpc\_id | ID of existing VPC where cluster will be deployed | string | n/a | yes |
+| region | AWS region | string | n/a | yes |
+| azs | Availability Zones for the cluster (1 master per AZ will be deployed) | list | n/a | yes |
+| k8s\_private\_subnets | List of private subnets (matching AZs) where to deploy the cluster (required if existing VPC is used) | list | n/a | yes |
+| k8s\_node\_count | Number of worker nodes in Kubernetes cluster | string | `"3"` | no |
+| k8s\_master\_instance\_type | Instance type (size) for master nodes | string | `"m4.large"` | no |
+| k8s\_node\_instance\_type | Instance type (size) for worker nodes | string | `"m4.large"` | no |
+| k8s\_masters\_iam\_policies\_arns | List of existing IAM policies that will be attached to instance profile for master nodes (EC2 instances) | list | n/a | yes |
+| k8s\_nodes\_iam\_policies\_arns | List of existing IAM policies that will be attached to instance profile for worker nodes (EC2 instances) | list | n/a | yes |
+| http\_proxy | IP[:PORT] - address and optional port of HTTP proxy to be used to download packages | string | n/a | yes |
+| k8s\_aws\_ssh\_keypair\_name | Optional name of existing SSH keypair on AWS account, to be used for cluster instances (will be generated if not specified) | string | `""` | no |
