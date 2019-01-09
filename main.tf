@@ -28,3 +28,8 @@ module "kubernetes_cluster_operations" {
   masters_iam_policies_arns = "${var.k8s_masters_iam_policies_arns}"
   nodes_iam_policies_arns   = "${var.k8s_nodes_iam_policies_arns}"
 }
+
+# ECR registry for customized JenkinsX image:
+resource "aws_ecr_repository" "jenkins-x-image" {
+  name = "jenkins-x-image"
+}

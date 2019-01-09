@@ -6,6 +6,7 @@ Most important elements of the environment:
 
 * VPC (not created by this module, must exist apriori as it can be only created with a portal)
 * Kubernetes cluster (to be used for CI/CD, monitoring, etc.)
+* ECR Docker registry
 * VPC Endpoint - kinesis-streams service (Interface type)
 * kinesis stream (logging)
 * elasticsearch domain (logging)
