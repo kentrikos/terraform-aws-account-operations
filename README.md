@@ -80,3 +80,4 @@ module "operations" {
 | k8s\_nodes\_iam\_policies\_arns | List of existing IAM policies that will be attached to instance profile for worker nodes (EC2 instances) | list | n/a | yes |
 | http\_proxy | IP[:PORT] - address and optional port of HTTP proxy to be used to download packages | string | n/a | yes |
 | k8s\_aws\_ssh\_keypair\_name | Optional name of existing SSH keypair on AWS account, to be used for cluster instances (will be generated if not specified) | string | `""` | no |
+| k8s_linux_distro | Linux distribution for K8s cluster instances (supported values: debian, amzn2) | string | `amzn2` | no |
