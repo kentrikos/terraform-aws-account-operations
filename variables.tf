@@ -49,6 +49,11 @@ variable "k8s_nodes_iam_policies_arns" {
   type        = "list"
 }
 
+variable "k8s_linux_distro" {
+  description = "Linux distribution for K8s cluster instances (supported values: debian, amzn2)"
+  default     = "amzn2"
+}
+
 variable "http_proxy" {
   description = "IP[:PORT] - address and optional port of HTTP proxy to be used to download packages"
 }
