@@ -51,7 +51,7 @@ variable "k8s_nodes_iam_policies_arns" {
 
 variable "k8s_linux_distro" {
   description = "Linux distribution for K8s cluster instances (supported values: debian, amzn2)"
-  default     = "amzn2"
+  default     = "debian"
 }
 
 variable "http_proxy" {
