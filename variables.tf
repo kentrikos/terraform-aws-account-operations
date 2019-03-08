@@ -69,11 +69,7 @@ variable "k8s_aws_ssh_keypair_name" {
   default     = ""
 }
 
-#variable "enable_logging" {
-#  default = true
-#}
-#
-#variable "elasticsearch_version" {
-#  default = "6.3"
-#}
-
+variable "no_proxy" {
+  description = "Comma seperated list of urls to be excluded from proxying."
+  default     = ""
+}
