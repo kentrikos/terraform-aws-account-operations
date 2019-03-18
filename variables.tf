@@ -73,3 +73,29 @@ variable "no_proxy" {
   description = "Comma seperated list of urls to be excluded from proxying."
   default     = ""
 }
+
+variable "enable_pod_autoscaling" {
+  description = "Enable horizontal pod autoscaling"
+  default     = false
+}
+
+variable "enable_cluster_autoscaling" {
+  description = "Enable cluster autoscaling"
+  default     = false
+}
+
+variable "protect_cluster_from_scale_in" {
+  description = "Protect cluster nodes from scale in (if using cluster autoscaling)"
+  default     = false
+}
+
+variable "install_helm" {
+  description = "Install Helm during the deployment of the cluster"
+  default     = true
+}
+
+variable "allowed_worker_ssh_cidrs" {
+  type        = "list"
+  description = "List of CIDR ranges to allow SSH access into worker nodes"
+  default     = []
+}

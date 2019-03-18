@@ -43,9 +43,13 @@ module "operations" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
+| allowed_worker_ssh_cidrs | List of CIDR ranges to allow SSH access into worker nodes | list | `<list>` | no |
 | azs | Availability Zones for the cluster (1 master per AZ will be deployed) | list | - | yes |
+| enable_cluster_autoscaling | Enable cluster autoscaling | string | `false` | no |
+| enable_pod_autoscaling | Enable horizontal pod autoscaling | string | `false` | no |
 | environment_type | Type of environment (e.g. test, int, e2e, prod) | string | - | yes |
 | http_proxy | IP[:PORT] - address and optional port of HTTP proxy to be used to download packages | string | - | yes |
+| install_helm | Install Helm during the deployment of the cluster | string | `true` | no |
 | k8s_aws_ssh_keypair_name | Optional name of existing SSH keypair on AWS account, to be used for cluster instances (will be generated if not specified) | string | `` | no |
 | k8s_linux_distro | Linux distribution for K8s cluster instances (supported values: debian, amzn2) | string | `debian` | no |
 | k8s_master_instance_type | Instance type (size) for master nodes | string | `m4.large` | no |
@@ -57,5 +61,6 @@ module "operations" {
 | no_proxy | Comma seperated list of urls to be excluded from proxying. | string | `` | no |
 | operations_aws_account_number | AWS operation account number (without hyphens) | string | - | yes |
 | product_domain_name | Name of product domain (e.g. maps) | string | - | yes |
+| protect_cluster_from_scale_in | Protect cluster nodes from scale in (if using cluster autoscaling) | string | `false` | no |
 | region | AWS region | string | - | yes |
 | vpc_id | ID of existing VPC where cluster will be deployed | string | - | yes |
