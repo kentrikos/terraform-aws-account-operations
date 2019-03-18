@@ -11,7 +11,7 @@ locals {
 
 # Kubernetes cluster:
 module "kubernetes_cluster_operations" {
-  source = "github.com/kentrikos/terraform-aws-eks?ref=feature/enable_helm"
+  source = "github.com/kentrikos/terraform-aws-eks?ref=ec065235be688998d4dda3eb394d67846cf93b88"
 
   cluster_prefix            = "${local.cluster_name}"
   region                    = "${var.region}"
