@@ -22,11 +22,11 @@ module "kubernetes_cluster_operations" {
   desired_worker_nodes          = "${var.k8s_node_count}"
   worker_node_instance_type     = "${var.k8s_node_instance_type}"
   key_name                      = "${var.k8s_aws_ssh_keypair_name}"
-  enable_cluster_autoscaling    = "${var.enable_cluster_autoscaling}"
-  enable_pod_autoscaling        = "${var.enable_pod_autoscaling}"
-  protect_cluster_from_scale_in = "${var.protect_cluster_from_scale_in}"
-  install_helm                  = "${var.install_helm}"
-  allowed_worker_ssh_cidrs      = "${var.allowed_worker_ssh_cidrs}"
+  enable_cluster_autoscaling    = "${var.k8s_enable_cluster_autoscaling}"
+  enable_pod_autoscaling        = "${var.k8s_enable_pod_autoscaling}"
+  protect_cluster_from_scale_in = "${var.k8s_protect_cluster_from_scale_in}"
+  install_helm                  = "${var.k8s_install_helm}"
+  allowed_worker_ssh_cidrs      = "${var.k8s_allowed_worker_ssh_cidrs}"
 
   tags = "${local.common_tags}"
 }
