@@ -38,6 +38,11 @@ module "operations" {
 
 ## Outputs
 
+| Name | Description |
+|------|-------------|
+| cluster_id | - |
+| worker_iam_role_name | - |
+
 
 ## Inputs
 
