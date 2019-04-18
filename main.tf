@@ -11,7 +11,7 @@ locals {
 
 # Kubernetes cluster:
 module "kubernetes_cluster_operations" {
-  source = "github.com/kentrikos/terraform-aws-eks?ref=2.0.1"
+  source = "github.com/radepal/kentrikos-terraform-aws-eks?ref=endpoint"
 
   cluster_prefix                = "${local.cluster_name}"
   region                        = "${var.region}"
