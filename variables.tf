@@ -94,6 +94,11 @@ variable "k8s_install_helm" {
   default     = true
 }
 
+variable "k8s_ingress_deploy" {
+  description = "Deploy Kubernetes Ingress controller on the cluster (requires install_helm=true)"
+  default     = true
+}
+
 variable "k8s_allowed_worker_ssh_cidrs" {
   type        = "list"
   description = "List of CIDR ranges to allow SSH access into worker nodes"
