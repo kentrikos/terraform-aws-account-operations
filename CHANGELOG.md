@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.4.3] - 2019-05-22
 - Disable automatic ingress deployment
 
+## [0.4.2] - 2019-05-08
+### Added
+- Added outputs from eks module
+
 ## [0.4.1] - 2019-04-16
 - Solved gp2 storage creation in EKS module
   
