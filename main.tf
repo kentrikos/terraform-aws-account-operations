@@ -43,37 +43,3 @@ module "kubernetes_cluster_operations" {
 resource "aws_ecr_repository" "jenkins-x-image" {
   name = "${var.product_domain_name}-${var.environment_type}-jenkins-x-image"
 }
-
-resource "aws_iam_role" "cluster_admin" {
-  name_prefix           = "${local.cluster_name}"
-  assume_role_policy    = "${data.aws_iam_policy_document.cluster_assume_role_policy.json}"
-  force_detach_policies = true
-  tags                  = "${local.common_tags}"
-}
-
-resource "aws_iam_role_policy_attachment" "cluster_admin_AmazonEKSClusterPolicy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-  role       = "${aws_iam_role.cluster_admin.name}"
-}
-
-resource "aws_iam_role_policy_attachment" "cluster_admin_AmazonEKSServicePolicy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
-  role       = "${aws_iam_role.cluster_admin.name}"
-}
-
-resource "aws_iam_role" "cluster_view" {
-  name_prefix           = "${local.cluster_name}"
-  assume_role_policy    = "${data.aws_iam_policy_document.cluster_assume_role_policy.json}"
-  force_detach_policies = true
-  tags                  = "${local.common_tags}"
-}
-
-resource "aws_iam_role_policy_attachment" "cluster_admin_AmazonEKSClusterPolicy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-  role       = "${aws_iam_role.cluster_view.name}"
-}
-
-resource "aws_iam_role_policy_attachment" "cluster_admin_AmazonEKSServicePolicy" {
-  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
-  role       = "${aws_iam_role.cluster_view.name}"
-}
