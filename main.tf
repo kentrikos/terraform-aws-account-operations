@@ -11,7 +11,7 @@ locals {
 
 # Kubernetes cluster:
 module "kubernetes_cluster_operations" {
-  source = "github.com/kentrikos/terraform-aws-eks?ref=2.1.0"
+  source = "github.com/kentrikos/terraform-aws-eks?ref=adding_roles"
 
   cluster_prefix                = "${local.cluster_name}"
   region                        = "${var.region}"
@@ -29,10 +29,51 @@ module "kubernetes_cluster_operations" {
   ingress_deploy                = false
   allowed_worker_ssh_cidrs      = "${var.k8s_allowed_worker_ssh_cidrs}"
 
+  map_roles          = "${var.map_roles}"
+  map_roles_count    = "${var.map_roles_count}"
+  map_users          = "${var.map_users}"
+  map_users_count    = "${var.map_users_count}"
+  map_accounts       = "${var.map_accounts}"
+  map_accounts_count = "${var.map_accounts_count}"
+
   tags = "${local.common_tags}"
 }
 
 # ECR registry for customized JenkinsX image:
 resource "aws_ecr_repository" "jenkins-x-image" {
   name = "${var.product_domain_name}-${var.environment_type}-jenkins-x-image"
+}
+
+resource "aws_iam_role" "cluster_admin" {
+  name_prefix           = "${local.cluster_name}"
+  assume_role_policy    = "${data.aws_iam_policy_document.cluster_assume_role_policy.json}"
+  force_detach_policies = true
+  tags                  = "${local.common_tags}"
+}
+
+resource "aws_iam_role_policy_attachment" "cluster_admin_AmazonEKSClusterPolicy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+  role       = "${aws_iam_role.cluster_admin.name}"
+}
+
+resource "aws_iam_role_policy_attachment" "cluster_admin_AmazonEKSServicePolicy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
+  role       = "${aws_iam_role.cluster_admin.name}"
+}
+
+resource "aws_iam_role" "cluster_view" {
+  name_prefix           = "${local.cluster_name}"
+  assume_role_policy    = "${data.aws_iam_policy_document.cluster_assume_role_policy.json}"
+  force_detach_policies = true
+  tags                  = "${local.common_tags}"
+}
+
+resource "aws_iam_role_policy_attachment" "cluster_admin_AmazonEKSClusterPolicy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
+  role       = "${aws_iam_role.cluster_view.name}"
+}
+
+resource "aws_iam_role_policy_attachment" "cluster_admin_AmazonEKSServicePolicy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
+  role       = "${aws_iam_role.cluster_view.name}"
 }
