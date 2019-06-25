@@ -40,7 +40,7 @@ module "operations" {
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | azs | Availability Zones for the cluster (1 master per AZ will be deployed) | list | n/a | yes |
-| enable\_default\_roles | Enable creation of default roles to assume | string | `"false"` | no |
+| enable\_default\_roles | Enable creation of default roles to assume | string | `"true"` | no |
 | environment\_type | Type of environment (e.g. test, int, e2e, prod) | string | n/a | yes |
 | http\_proxy | IP[:PORT] - address and optional port of HTTP proxy to be used to download packages | string | n/a | yes |
 | k8s\_allowed\_worker\_ssh\_cidrs | List of CIDR ranges to allow SSH access into worker nodes | list | `<list>` | no |
