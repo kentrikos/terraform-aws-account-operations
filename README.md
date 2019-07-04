@@ -31,7 +31,15 @@ module "operations" {
 
   k8s_masters_iam_policies_arns    = "${var.k8s_masters_iam_policies_arns}"
   k8s_nodes_iam_policies_arns      = "${var.k8s_nodes_iam_policies_arns}"
-
+  
+  map_roles            = "${var.map_roles}"
+  map_roles_count      = "${var.map_roles_count}"
+  map_users            = "${var.map_users}"
+  map_users_count      = "${var.map_users_count}"
+  map_accounts         = "${var.map_accounts}"
+  map_accounts_count   = "${var.map_accounts_count}"
+  enable_default_roles = "${var.enable_default_roles}"
+  
 }
 ```
 
