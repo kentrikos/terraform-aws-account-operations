@@ -57,3 +57,8 @@ output "worker_iam_role_arn" {
   description = "default IAM role ARN for EKS worker groups"
   value       = "${module.kubernetes_cluster_operations.worker_iam_role_arn}"
 }
+
+output "cluster_roles" {
+  description = "Cluster roles to assueme for EKS"
+  value       = "${module.kubernetes_cluster_operations.cluster_roles}"
+}

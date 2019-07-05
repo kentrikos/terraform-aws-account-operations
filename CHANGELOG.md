@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2019-07-04
+### Added 
+- Maps for roles, users and account
+- Default roles to assume for EKS
+- Flag enable_default_roles to enable creation of default role; default false 
+
 ## [0.4.3] - 2019-05-22
 ### Added
 - Disable automatic ingress deployment
