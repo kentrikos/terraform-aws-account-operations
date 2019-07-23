@@ -29,7 +29,7 @@ module "kubernetes_cluster_operations" {
   ingress_deploy                = false
   allowed_worker_ssh_cidrs      = var.k8s_allowed_worker_ssh_cidrs
 
- cluster_version = "1.12"
+  cluster_version = var.k8s_cluster_version
 
   map_roles            = var.map_roles
   map_users            = var.map_users

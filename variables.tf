@@ -100,6 +100,12 @@ variable "k8s_allowed_worker_ssh_cidrs" {
   default     = []
 }
 
+variable "k8s_cluster_version" {
+  type        = string
+  description = "Kubernetes version to use for the EKS cluster."
+  default     = "1.13"
+}
+
 variable "map_accounts" {
   description = "Additional AWS account numbers to add to the aws-auth configmap. See terraform-aws-modules-eks examples/basic/variables.tf for example format."
   type        = list(string)

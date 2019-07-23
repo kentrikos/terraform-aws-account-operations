@@ -53,6 +53,7 @@ module "operations" {
 | `k8s_allowed_worker_ssh_cidrs` | List of CIDR ranges to allow SSH access into worker nodes | list(string) | n/a |  yes |
 | `k8s_aws_ssh_keypair_name` | Optional name of existing SSH keypair on AWS account, to be used for cluster instances (will be generated if not specified) | n/a | n/a |  yes |
 | `k8s_enable_cluster_autoscaling` | Enable cluster autoscaling | n/a | n/a |  yes |
+| `k8s_cluster_version` | Kubernetes version to use for the EKS cluster | string | `1.13` |  no |
 | `k8s_enable_pod_autoscaling` | Enable horizontal pod autoscaling | n/a | n/a |  yes |
 | `k8s_install_helm` | Install Helm during the deployment of the cluster | n/a | `true` |  no |
 | `k8s_linux_distro` | Linux distribution for K8s cluster instances (supported values: debian, amzn2) | n/a | `"debian"` |  no |
