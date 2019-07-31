@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2019-07-30
+### Changed
+- Required terraform version updated to `>= 0.12`
+- Updated Kentrikos EKS module to 3.0.0
+
 ## [0.5.0] - 2019-07-04
 ### Added 
 - Maps for roles, users and account
