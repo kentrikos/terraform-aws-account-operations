@@ -11,7 +11,7 @@ locals {
 
 # Kubernetes cluster:
 module "kubernetes_cluster_operations" {
-  source = "github.com/kentrikos/terraform-aws-eks?ref=3.0.0"
+  source = "github.com/kentrikos/terraform-aws-eks?ref=ingress_upgrade"
 
   cluster_prefix                = local.cluster_name
   region                        = var.region
@@ -26,7 +26,7 @@ module "kubernetes_cluster_operations" {
   enable_pod_autoscaling        = var.k8s_enable_pod_autoscaling
   protect_cluster_from_scale_in = var.k8s_protect_cluster_from_scale_in
   install_helm                  = var.k8s_install_helm
-  ingress_deploy                = false
+  ingress_deploy                = var.k8s_ingress_deploy
   allowed_worker_ssh_cidrs      = var.k8s_allowed_worker_ssh_cidrs
 
   cluster_version = var.k8s_cluster_version
@@ -37,6 +37,10 @@ module "kubernetes_cluster_operations" {
   enable_default_roles = var.enable_default_roles
 
   tags = local.common_tags
+
+  ingress_helm_values  = var.ingress_helm_values
+  ingress_service_type = var.ingress_service_type
+
 }
 
 # ECR registry for customized JenkinsX image:
