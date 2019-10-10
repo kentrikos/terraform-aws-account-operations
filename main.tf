@@ -41,6 +41,8 @@ module "kubernetes_cluster_operations" {
   ingress_helm_values  = var.ingress_helm_values
   ingress_service_type = var.ingress_service_type
 
+  cluster_enabled_log_types     = var.k8s_cluster_enabled_log_types
+  cluster_log_retention_in_days = var.k8s_cluster_log_retention_in_days
 }
 
 # ECR registry for customized JenkinsX image:
