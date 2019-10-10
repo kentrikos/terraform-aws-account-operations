@@ -28,6 +28,7 @@ module "kubernetes_cluster_operations" {
   install_helm                  = var.k8s_install_helm
   ingress_deploy                = var.k8s_ingress_deploy
   allowed_worker_ssh_cidrs      = var.k8s_allowed_worker_ssh_cidrs
+  allowed_worker_nodeport_cidrs = var.k8s_allowed_worker_nodeport_cidrs
 
   cluster_version = var.k8s_cluster_version
 
