@@ -6,6 +6,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2019-10-17
+### Added 
+- Support for parameters for ingress Helm deployment
+- Support for EKS logs
+
+### Changed
+- Updated Kentrikos EKS module to 4.0.0
+
+### BC
+- Variable type changed for `map_users` and `map_roles` to align with upstream eks module
+
 ## [1.0.0] - 2019-07-30
 ### Changed
 - Required terraform version updated to `>= 0.12`

@@ -114,17 +114,58 @@ variable "map_accounts" {
 
 variable "map_roles" {
   description = "Additional IAM roles to add to the aws-auth configmap. See terraform-aws-modules-eks examples/basic/variables.tf for example format."
-  type        = list(map(string))
-  default     = []
+  type = list(object({
+    rolearn  = string
+    username = string
+    groups   = list(string)
+  }))
+  default = []
 }
 
 variable "map_users" {
-  description = "Additional IAM users to add to the aws-auth configmap. See terraform-aws-modules-eksexamples/basic/variables.tf for example format."
-  type        = list(map(string))
-  default     = []
+  description = "Additional IAM users to add to the aws-auth configmap. See terraform-aws-modules-eks examples/basic/variables.tf for example format."
+  type = list(object({
+    userarn  = string
+    username = string
+    groups   = list(string)
+  }))
+  default = []
 }
 
 variable "enable_default_roles" {
   description = "Enable creation of default roles to assume"
   default     = true
+}
+
+variable "k8s_ingress_deploy" {
+  description = "Deploy Kubernetes Ingress controller on the cluster (requires install_helm=true)"
+  default     = true
+}
+
+variable "ingress_helm_values" {
+  default     = {}
+  description = "For helm ingress chart values in k => v map"
+}
+
+variable "ingress_service_type" {
+  description = "Type of ingress controller service to create"
+  default     = "NodePort"
+}
+
+variable "k8s_cluster_enabled_log_types" {
+  default     = []
+  description = "A list of the desired control plane logging to enable. [api,audit,authenticator,controllerManager,scheduler] For more information, see Amazon EKS Control Plane Logging documentation (https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)"
+  type        = list(string)
+}
+
+variable "k8s_cluster_log_retention_in_days" {
+  default     = 90
+  description = "Number of days to retain log events. Default retention - 90 days."
+  type        = number
+}
+
+variable "k8s_allowed_worker_nodeport_cidrs" {
+  description = "List of CIDR ranges allowed to connect to services exposed with NodePort in the cluster that are deployed by the module"
+  type        = list(string)
+  default     = []
 }
